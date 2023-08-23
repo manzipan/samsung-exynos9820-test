@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        model: [ "G977B" ]
+        model: [ "N975F" ]
 
     steps:
       - uses: actions/checkout@v3
@@ -55,7 +55,7 @@ jobs:
           set -e -o pipefail
           ./cruelbuild config                    \
                        model=${{ matrix.model }} \
-                       name="VN-CruelKernel-v5.6"     \
+                       name="Mux-Kernel-v1.08"     \
                        toolchain=$TOOLCHAIN     \
                        +magisk=alpha                 \
                        +nohardening              \
