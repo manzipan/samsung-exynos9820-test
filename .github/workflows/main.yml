@@ -53,29 +53,29 @@ jobs:
       - name: Kernel Configure
         run: |
           set -e -o pipefail
-          ./cruelbuild config                    \
-                       model=${{ matrix.model }} \
-                       name="Mux-Kernel-v1.08"     \
-                       toolchain=$TOOLCHAIN     \
-                       +magisk=alpha                 \
-                       +nohardening              \
-                       +fp_boost              \
-                       +ttl                      \
-                       +wireguard                \
-                       +cifs                     \
-                       +sdfat                    \
-                       +ntfs                     \
-                       +force_dex_wqhd           \
-                       +morosound                \
-                       +boeffla_wl_blocker       \
-                       +nodebug                   \
-                       +noaudit                   \
-                       +noksm                   \
-                       +nomodules                   \
-                       +usb_serial                   \
-                       +sched_powersave                   \
-                       +sched_performance                   \
-                       +fake_config                   \
+          ./cruelbuild config                            \
+                       model=${{ matrix.model }}         \
+                       name="Mux-Kernel-v1.08-Cruel"     \
+                       toolchain=$TOOLCHAIN              \
+                       +magisk=alpha                     \
+                       +nohardening                      \
+                       +fp_boost                         \
+                       +ttl                              \
+                       +wireguard                        \
+                       +cifs                             \
+                       +sdfat                            \
+                       +ntfs                             \
+                       +force_dex_wqhd                   \
+                       +morosound                        \
+                       +boeffla_wl_blocker               \
+                       +nodebug                          \
+                       +noaudit                          \
+                       +noksm                            \
+                       +nomodules                        \
+                       +usb_serial                       \
+                       +sched_powersave                  \
+                       +sched_performance                \
+                       +fake_config                      \
           2>&1 | tee config.info
 
       - name: Install gcc-aarch64-linux-gnu
@@ -131,7 +131,7 @@ jobs:
           path: installer/*
           if-no-files-found: error
       - name: Upload Kernel Images
-        if: env.INSTALLER != 'yes'
+        if: env.INSTALLER == 'yes'
         uses: actions/upload-artifact@v2
         with:
           name: CruelKernel-${{ matrix.model }}
